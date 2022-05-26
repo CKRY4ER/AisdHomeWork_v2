@@ -1,4 +1,5 @@
 ﻿using AISDHomeWork.lesson2;
+using AISDHomeWork.lesson3;
 using System;
 
 namespace AISDHomeWork
@@ -22,6 +23,11 @@ namespace AISDHomeWork
                         lessonMenu.Menu();
                         break;
 
+                    case "3":
+                        MenuForLesson3 menuForLesson3 = new MenuForLesson3();
+                        menuForLesson3.Menu();
+                        break;
+
                     default:
                         Console.WriteLine("Не верный ввод. Урока под таким номером не существует!");
                         Console.ReadKey(true);
@@ -35,6 +41,7 @@ namespace AISDHomeWork
             Console.Clear();
             Console.Write("1 - Блок-схемы, асимптотическая сложность, рекурсия\n" +
                 "2 - Массив, список, поиск\n" +
+                "3 - Класс, структура и дистанция\n" +
                 "0 - Выход из программы\n" +
                 "Выберите номер урока: ");
 
