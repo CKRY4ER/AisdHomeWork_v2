@@ -109,7 +109,7 @@ namespace AISDHomeWork.lesson4.BinaryT
             if (temporaryNode == null)
                 return false;
 
-            #region Случай - когда узел не имеет дочерних узлов
+            #region Случай - когда удаляемый узел не имеет дочерних узлов
 
             if (temporaryNode._leftNode == null && temporaryNode._rightNode == null)
             {
@@ -131,7 +131,7 @@ namespace AISDHomeWork.lesson4.BinaryT
 
             #endregion
 
-            #region Случай, когда узел имеет только один из дочерних узлов
+            #region Случай, когда удаляемый узел имеет только один из дочерних узлов
 
             if (temporaryNode._leftNode == null)
             {
@@ -147,6 +147,7 @@ namespace AISDHomeWork.lesson4.BinaryT
                     return true;
                 }
 
+                
                 if (temporaryNode._parentNode._leftNode == temporaryNode)
                     temporaryNode._parentNode._leftNode = temporaryNode._rightNode;
                 else
@@ -205,17 +206,28 @@ namespace AISDHomeWork.lesson4.BinaryT
             //Если минимальный узел имеет правую вершину
             if (rightMinNode._rightNode != null)
             {
-                rightMinNode._rightNode._parentNode = parentRightMinNode;
-                parentRightMinNode._leftNode = rightMinNode._rightNode;
-
                 rightMinNode._leftNode = temporaryNode._leftNode;
-                rightMinNode._rightNode = temporaryNode._rightNode;
-
-                temporaryNode._leftNode._parentNode = rightMinNode;
-                temporaryNode._rightNode._parentNode = rightMinNode;
-
-                if (temporaryNode == _headNode)
+                if (temporaryNode == _headNode && temporaryNode == parentRightMinNode)
                 {
+                    _headNode = rightMinNode;
+                    rightMinNode._leftNode = temporaryNode._leftNode;
+                    temporaryNode._leftNode._parentNode = rightMinNode;
+
+                    temporaryNode = null;
+                    _count--;
+
+                    return true;
+                }
+                else if (temporaryNode == _headNode)
+                {
+                    rightMinNode._rightNode._parentNode = parentRightMinNode;
+                    parentRightMinNode._leftNode = rightMinNode._rightNode;
+
+                    rightMinNode._rightNode = temporaryNode._rightNode;
+
+                    temporaryNode._leftNode._parentNode = rightMinNode;
+                    temporaryNode._rightNode._parentNode = rightMinNode;
+
                     rightMinNode._parentNode = null;
                     _headNode = rightMinNode;
 
@@ -226,6 +238,13 @@ namespace AISDHomeWork.lesson4.BinaryT
                 }
                 else
                 {
+                    rightMinNode._rightNode._parentNode = parentRightMinNode;
+                    parentRightMinNode._leftNode = rightMinNode._rightNode;
+
+                    rightMinNode._rightNode = temporaryNode._rightNode;
+
+                    temporaryNode._leftNode._parentNode = rightMinNode;
+                    temporaryNode._rightNode._parentNode = rightMinNode;
 
 
                     Node parentTemporaryNode = temporaryNode._parentNode;
@@ -246,6 +265,7 @@ namespace AISDHomeWork.lesson4.BinaryT
             //Если минимальный узел не имеет ни одну из дочерних вершин
             if (rightMinNode._leftNode == null && rightMinNode._rightNode == null)
             {
+
                 if (parentRightMinNode == _headNode)
                 {
                     rightMinNode._parentNode = null;
@@ -254,6 +274,25 @@ namespace AISDHomeWork.lesson4.BinaryT
                     _headNode = rightMinNode;
 
                     parentRightMinNode = null;
+                    _count--;
+
+                    return true;
+                }
+
+                if (temporaryNode == _headNode)
+                {
+                    parentRightMinNode._leftNode = null;
+                    rightMinNode._parentNode = null;
+
+                    rightMinNode._leftNode = _headNode._leftNode;
+                    _headNode._leftNode._parentNode = rightMinNode;
+
+                    rightMinNode._rightNode = _headNode._rightNode;
+                    _headNode._rightNode._parentNode = rightMinNode;
+
+                    _headNode = rightMinNode;
+
+                    temporaryNode = null;
                     _count--;
 
                     return true;
@@ -284,6 +323,7 @@ namespace AISDHomeWork.lesson4.BinaryT
                 rightMinNode._leftNode = temporaryNode._leftNode;
                 rightMinNode._rightNode = temporaryNode._rightNode;
 
+                //TODO: не работает при удаление головы с 2 узлами
                 if (rightMinNode._parentNode._leftNode == temporaryNode)
                     rightMinNode._parentNode._leftNode = rightMinNode;
                 else
