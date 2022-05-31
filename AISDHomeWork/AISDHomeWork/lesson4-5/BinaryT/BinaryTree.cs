@@ -338,5 +338,51 @@ namespace AISDHomeWork.lesson4.BinaryT
 
             return false;
         }
+
+        /// <summary>
+        /// Вывод всех записей в дереве используя обход в ширину
+        /// </summary>
+        public void BFS()
+        {
+            if (_headNode == null)
+                return;
+
+            Queue<Node> nodes = new Queue<Node>();
+            nodes.Enqueue(_headNode);
+
+            while (nodes.Count != 0)
+            {
+                Node node = nodes.Dequeue();
+                Console.Write($"{node.Value} ");
+
+                if (node._rightNode != null)
+                    nodes.Enqueue(node._rightNode);
+
+                if (node._leftNode != null)
+                    nodes.Enqueue(node._leftNode);
+            }
+        }
+
+        public void DFS()
+        {
+
+            if (_headNode == null)
+                return;
+
+            Stack<Node> nodes = new Stack<Node>();
+            nodes.Push(_headNode);
+
+            while (nodes.Count != 0)
+            {
+                Node node = nodes.Pop();
+                Console.Write($"{node.Value} ");
+
+                if (node._leftNode != null)
+                    nodes.Push(node._leftNode);
+
+                if (node._rightNode != null)
+                    nodes.Push(node._rightNode);
+            }
+        }
     }
 }
