@@ -1,5 +1,6 @@
 ﻿using AISDHomeWork.lesson2;
 using AISDHomeWork.lesson3;
+using AISDHomeWork.lesson4;
 using System;
 
 namespace AISDHomeWork
@@ -30,7 +31,7 @@ namespace AISDHomeWork
 
                     case "4":
                         MenuForLesson4 menuForLesson4 = new MenuForLesson4();
-                        menuForLesson3.Menu();
+                        menuForLesson4.Menu();
                         break;
 
                     default:
@@ -47,7 +48,7 @@ namespace AISDHomeWork
             Console.Write("1 - Блок-схемы, асимптотическая сложность, рекурсия\n" +
                 "2 - Массив, список, поиск\n" +
                 "3 - Класс, структура и дистанция\n" +
-                "4 - Деревья, хэш-таблицы" +
+                "4 - Деревья, хэш-таблицы\n" +
                 "0 - Выход из программы\n" +
                 "Выберите номер урока: ");
 
