@@ -67,6 +67,21 @@ namespace AISDHomeWork.lesson4
                                     Console.ReadKey(true);
                                     break;
 
+                                case "5":
+                                    Console.Clear();
+                                    TreePrinter.Print(tree.Root);
+                                    Console.WriteLine("Вывод всех узлов по правилу обхода в ширину:");
+                                    tree.BFS();
+                                    Console.ReadKey(true);
+                                    break;
+
+                                case "6":
+                                    Console.Clear();
+                                    TreePrinter.Print(tree.Root);
+                                    Console.WriteLine("Вывод всех узлов по правилу обхода в глубину");
+                                    tree.DFS();
+                                    Console.ReadKey(true);
+                                    break;
                                 default:
                                     break;
                             }
@@ -146,6 +161,8 @@ namespace AISDHomeWork.lesson4
                 "2 - Найти узел в дереве\n" +
                 "3 - Удалить узел из дерева\n" +
                 "4 - Вывести дерево в консоль\n" +
+                "5 - Вывести узлы дерева по правилу обхода в ширину\n" +
+                "6 - Вывести узлы дерева по правилу обхода в глубину\n" +
                 "0 - Выход из задания\n" +
                 "Введите действие: ");
             return Console.ReadLine();

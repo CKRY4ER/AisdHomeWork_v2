@@ -30,6 +30,7 @@ namespace AISDHomeWork
                         break;
 
                     case "4":
+                    case "5":
                         MenuForLesson4 menuForLesson4 = new MenuForLesson4();
                         menuForLesson4.Menu();
                         break;
@@ -49,6 +50,7 @@ namespace AISDHomeWork
                 "2 - Массив, список, поиск\n" +
                 "3 - Класс, структура и дистанция\n" +
                 "4 - Деревья, хэш-таблицы\n" +
+                "5 - Стек, очередь, словарь и коллекции в C#\n" +
                 "0 - Выход из программы\n" +
                 "Выберите номер урока: ");
 
